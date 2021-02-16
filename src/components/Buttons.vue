@@ -2,14 +2,18 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div class="buttons">
-      <button class="button primary">Button</button>
+      <button class="button primary" @click="loading = !loading">
+        <img v-if="loading" alt="loading" class="loading" src="../assets/loading.svg"/>
+        <p v-else>Button</p>
+      </button>
       <button disabled class="button primary">Button</button>
-      <button class="button primary"><img alt="loading" class="loading" src="../assets/loading.svg"/></button>
     </div>
     <div class="buttons">
-      <button class="button secondary">Button</button>
+      <button class="button secondary" @click="loading = !loading">
+        <img v-if="loading" alt="loading" class="loading" src="../assets/loading2.svg"/>
+        <p v-else>Button</p>
+      </button>
       <button disabled class="button secondary">Button</button>
-      <button class="button secondary"><img alt="loading" class="loading" src="../assets/loading2.svg"/></button>
     </div>
   </div>
 </template>
@@ -17,6 +21,11 @@
 <script>
 export default {
   name: 'Buttons',
+  data() {
+    return {
+      loading: false
+    }
+  },
   props: {
     msg: String
   }
